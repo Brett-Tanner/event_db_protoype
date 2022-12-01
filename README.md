@@ -28,7 +28,7 @@ Want hosting, currently on AWS, looking at Firebase
 - name STRING
 - devise stuff
 - phone STRING
-- role INT [:parent, :manager, :admin]
+- role INT [:caregiver, :manager, :admin]
 - school FOREIGN_KEY
 
 ### Validations
