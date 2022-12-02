@@ -1,6 +1,6 @@
 # Requirements
 
-Needs to hold a bunch of info on what days Ss are going, times and which school
+Needs to hold a bunch of info on what event_days Ss are going, times and which school
 SMs need to see (and SM of school they're visiting if that happens)
 Need to be able to edit, but prob only one S at a time
 Want hosting, currently on AWS, looking at Firebase
@@ -52,7 +52,8 @@ Want hosting, currently on AWS, looking at Firebase
 ### Associations
 - belongs_to :parent
 - has_many :events, through: registrations
-- has_many :days, through: :events
+- has_many :event_days, through: :events
+- has_many :emergency_contacts
 
 
 ## Registration
@@ -79,11 +80,11 @@ Want hosting, currently on AWS, looking at Firebase
 
 ### Associations
 - belongs_to :school
-- has_many :days
+- has_many :event_days
 - has_many :children, through: registrations
 
 
-## Day
+## event_days
 ### Attributes
 - date DATE
 - fee DECIMAL
@@ -98,3 +99,17 @@ Want hosting, currently on AWS, looking at Firebase
 ### Associations
 - belongs_to :event
 - has_many :children, through: :event
+
+
+## Emergency Contacts
+### Attributes
+- name STRING
+- relationship STRING
+- phone STRING
+- child FOREIGN_KEY
+
+### Validations
+- 
+
+### Associations
+- belongs_to :child
