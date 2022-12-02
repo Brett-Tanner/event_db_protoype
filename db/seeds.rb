@@ -1,6 +1,7 @@
 User.destroy_all
 School.destroy_all
 Child.destroy_all
+Event.destroy_all
 
 User.create([
   {
@@ -143,4 +144,24 @@ mizonokuchi_parents.first.children.create(timmy)
 mizonokuchi_parents.last.children.create([timmy, timmy])
 
 
-puts "Give the first parent from each school once child, and the second two children"
+puts "Gave the first parent from each school once child, and the second two children"
+
+winter_school = {
+  title: "Winter School 2022",
+  description: "Fun winter activities for all!",
+  start_date: "2022-12-7",
+  end_date: "2023-01-9"
+}
+
+School.all.each do |school|
+  school.events.create(winter_school)
+end
+
+okurayama.events.create(
+  title: "Summer School 2023",
+  description: "Fun summer activities for all!",
+  start_date: "2023-06-7",
+  end_date: "2023-06-27"
+)
+
+puts "Added a unique 'Winter School' event to each school, and 'Summer School' to Okurayama"
