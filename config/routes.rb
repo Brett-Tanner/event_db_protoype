@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :children
   resources :schools
   devise_for :users
 

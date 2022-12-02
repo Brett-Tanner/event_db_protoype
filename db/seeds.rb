@@ -1,4 +1,6 @@
 User.destroy_all
+School.destroy_all
+Child.destroy_all
 
 User.create([
   {
@@ -13,7 +15,6 @@ User.create([
 
 puts "Created Admin"
 
-School.destroy_all
 
 School.create([
   {
@@ -120,3 +121,26 @@ mizonokuchi.users = User.create([
 ])
 
 puts "Added an SM and 2 parents to each school"
+
+
+timmy = {
+  name: "Timmy",
+  birthday: "2000-12-18",
+  level: "Land 2",
+  allergies: "Augmentin"
+}
+
+okurayama_parents = okurayama.users.where(role: 0)
+okurayama_parents.first.children.create(timmy)
+okurayama_parents.last.children.create([timmy, timmy])
+
+shinjo_parents = shinjo.users.where(role: 0)
+shinjo_parents.first.children.create(timmy)
+shinjo_parents.last.children.create([timmy, timmy])
+
+mizonokuchi_parents = mizonokuchi.users.where(role: 0)
+mizonokuchi_parents.first.children.create(timmy)
+mizonokuchi_parents.last.children.create([timmy, timmy])
+
+
+puts "Give the first parent from each school once child, and the second two children"
