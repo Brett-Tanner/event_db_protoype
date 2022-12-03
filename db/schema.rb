@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_021225) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_115916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_021225) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_children_on_user_id"
+  end
+
+  create_table "emergency_contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "relationship"
+    t.string "phone"
+    t.bigint "child_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_emergency_contacts_on_child_id"
   end
 
   create_table "event_days", force: :cascade do |t|
@@ -84,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_021225) do
   end
 
   add_foreign_key "children", "users"
+  add_foreign_key "emergency_contacts", "children"
   add_foreign_key "event_days", "events"
   add_foreign_key "events", "schools"
   add_foreign_key "registrations", "children"

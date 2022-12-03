@@ -206,3 +206,23 @@ okurayama.event_days.each do |day|
 end
 
 puts "Added a random child to each event_day"
+
+children = Child.all
+contacts = [
+  {
+    name: "Jill",
+    relationship: "Mum",
+    phone: "1111111111"
+  },
+  {
+    name: "Jack",
+    relationship: "Dad",
+    phone: "222222222222"
+  }
+]
+
+children.each do |child|
+  child.emergency_contacts.create(contacts)
+end
+
+puts "Added two emergency contacts to each child"
