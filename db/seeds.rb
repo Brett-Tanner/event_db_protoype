@@ -199,18 +199,10 @@ okurayama.events.create(
 )
 
 puts "Added a unique 'Winter School' event to each school, plus 'Summer School' to Okurayama"
-
-
 puts "Created 3 event days for each Winter School, 2 for Summer School"
 
-# okurayama_children = okurayama_parents.map{|parent| parent.children}.flatten
+okurayama.event_days.each do |day|
+  day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
+end
 
-# shinjo_children = shinjo_parents.map{|parent| parent.children}.flatten
-
-# mizonokuchi_children = mizonokuchi_parents.map{|parent| parent.children}.flatten
-
-# puts "Registered a random number of children for each day of the event"
-
-
-
-# puts "Registered a child for an event_day at a different school"
+puts "Added a random child to each event_day"
