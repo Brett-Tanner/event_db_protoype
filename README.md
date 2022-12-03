@@ -21,7 +21,7 @@ Want hosting, currently on AWS, looking at Firebase
 - has_many :users
 - has_many :events
 - has_many :children, through: :users
-- has_many :event_children, through: :events, source: etc. etc.
+- has_many :event_children, through: :events, through: :event_days, source: etc. etc.
 
 ## User
 ### Attributes
@@ -51,8 +51,7 @@ Want hosting, currently on AWS, looking at Firebase
 
 ### Associations
 - belongs_to :parent
-- has_many :events, through: registrations
-- has_many :event_days, through: :events
+- has_many :event_days, through: registrations
 - has_many :emergency_contacts
 
 
@@ -60,6 +59,8 @@ Want hosting, currently on AWS, looking at Firebase
 ### Attributes
 - child_id FOREIGN_KEY
 - event_id FOREIGN_KEY
+- attend_afternoon BOOLEAN
+- attend_morning BOOLEANf
 
 ### Validations
 - 
@@ -81,16 +82,13 @@ Want hosting, currently on AWS, looking at Firebase
 ### Associations
 - belongs_to :school
 - has_many :event_days
-- has_many :children, through: registrations
 
 
-## event_days
+## Event_day
 ### Attributes
 - date DATE
 - fee DECIMAL
-- attend_morning BOOLEAN
 - morning_description STRING
-- attend_afternoon BOOLEAN
 - afternoon_description STRING
 
 ### Validations
@@ -98,7 +96,8 @@ Want hosting, currently on AWS, looking at Firebase
 
 ### Associations
 - belongs_to :event
-- has_many :children, through: :event
+- has_many :registrations
+- has_many :children, through: registrations
 
 
 ## Emergency Contacts

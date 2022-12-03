@@ -149,8 +149,28 @@ puts "Gave the first parent from each school once child, and the second two chil
 winter_school = {
   title: "Winter School 2022",
   description: "Fun winter activities for all!",
-  start_date: "2022-12-7",
-  end_date: "2023-01-9"
+  start_date: "2022-12-07",
+  end_date: "2022-12-09",
+  event_days_attributes: {
+    1 => {
+    date: "2022-12-7",
+    fee: 500,
+    morning_description: "Fun for everyone!",
+    afternoon_description: "Fun for everyone!"
+    },
+    2 => {
+    date: "2022-12-8",
+    fee: 500,
+    morning_description: "Fun for everyone!",
+    afternoon_description: "Fun for everyone!"
+    },
+    3 => {
+    date: "2022-12-9",
+    fee: 500,
+    morning_description: "Fun for everyone!",
+    afternoon_description: "Fun for everyone!"
+    }
+  }
 }
 
 School.all.each do |school|
@@ -160,8 +180,37 @@ end
 okurayama.events.create(
   title: "Summer School 2023",
   description: "Fun summer activities for all!",
-  start_date: "2023-06-7",
-  end_date: "2023-06-27"
+  start_date: "2023-06-07",
+  end_date: "2023-06-08",
+  event_days_attributes: {
+    1 => {
+    date: "2023-06-07",
+    fee: 800,
+    morning_description: "Fun for everyone!",
+    afternoon_description: "Fun for everyone!"
+    },
+    2 => {
+    date: "2023-06-08",
+    fee: 800,
+    morning_description: "Fun for everyone!",
+    afternoon_description: "Fun for everyone!"
+    }
+  }
 )
 
-puts "Added a unique 'Winter School' event to each school, and 'Summer School' to Okurayama"
+puts "Added a unique 'Winter School' event to each school, plus 'Summer School' to Okurayama"
+
+
+puts "Created 3 event days for each Winter School, 2 for Summer School"
+
+# okurayama_children = okurayama_parents.map{|parent| parent.children}.flatten
+
+# shinjo_children = shinjo_parents.map{|parent| parent.children}.flatten
+
+# mizonokuchi_children = mizonokuchi_parents.map{|parent| parent.children}.flatten
+
+# puts "Registered a random number of children for each day of the event"
+
+
+
+# puts "Registered a child for an event_day at a different school"

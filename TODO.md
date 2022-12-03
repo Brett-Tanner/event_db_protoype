@@ -14,3 +14,4 @@
 # Future Notes
 
 - I can probably autogenerate the correct number of days for an event based on the start and end dates, then redirect to a form where they set up those days after the event is successfully created
+    - But there are holidays and weekends, so maybe a calendar based date picker would be better
