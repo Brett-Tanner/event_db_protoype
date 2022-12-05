@@ -1,0 +1,2 @@
+class EventDaysController < ApplicationController
+end
