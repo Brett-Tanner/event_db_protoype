@@ -3,20 +3,6 @@ School.destroy_all
 Child.destroy_all
 Event.destroy_all
 
-User.create([
-  {
-    name: "admin",
-    phone: "07042159875",
-    role: 2,
-    email: "admin@gmail.com",
-    password: "adminpass",
-    password_confirmation: "adminpass"
-  }
-])
-
-puts "Created Admin"
-
-
 School.create([
   {
     name: "Okurayama",
@@ -37,8 +23,23 @@ School.create([
 
 puts "Created 3 schools"
 
+admin = {
+  name: "admin",
+  phone: "07042159875",
+  role: 2,
+  email: "admin@gmail.com",
+  password: "adminpass",
+  password_confirmation: "adminpass"
+}
+
+School.all.each do |school|
+  school.users.create(admin)
+end
+
+puts "Added the admin as a user to each school"
+
 okurayama = School.find_by(name: "Okurayama")
-okurayama.users = User.create([
+okurayama.users.create([
   {
     name: "ミノル",
     phone: "07042159873",
@@ -66,7 +67,7 @@ okurayama.users = User.create([
 ])
 
 shinjo = School.find_by(name: "Musahi-Shinjo")
-shinjo.users = User.create([
+shinjo.users.create([
   {
     name: "ひらがな",
     phone: "07042159874",
@@ -94,7 +95,7 @@ shinjo.users = User.create([
 ])
 
 mizonokuchi = School.find_by(name: "Mizonokuchi")
-mizonokuchi.users = User.create([
+mizonokuchi.users.create([
   {
     name: "Koki",
     phone: "07042159854",
