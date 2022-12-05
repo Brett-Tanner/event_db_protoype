@@ -1,0 +1,13 @@
+<div class="event_day">
+    <h2><%= link_to event_day.date, event_day_path(event_day) %></h2>
+    <p>Fee: $<%= event_day.fee %></p>
+    <p>Morning Activity: <%= event_day.morning_description %></p>
+    <p>Afternoon Activity: <%= event_day.afternoon_description %></p>
+    <p><%= event_day.children.count %> children registered</p>
+    
+    <div class="registration_container">
+        <%= render event_day.registrations %>
+    </div>
+
+    <%= link_to "Register new child", new_registration_path %>
+</div>

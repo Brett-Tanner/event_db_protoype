@@ -5,6 +5,10 @@ SMs need to see (and SM of school they're visiting if that happens)
 Need to be able to edit, but prob only one S at a time
 Want hosting, currently on AWS, looking at Firebase
 
+# View differences
+
+
+
 # Database Schema
 [Visual schema here](https://lucid.app/lucidchart/582c392f-7113-4fb7-9a93-8697af8fa27d/edit?invitationId=inv_4ec19f91-a432-4b99-a0d2-09d50b682b5f)
 
@@ -60,7 +64,7 @@ Want hosting, currently on AWS, looking at Firebase
 - child_id FOREIGN_KEY
 - event_id FOREIGN_KEY
 - attend_afternoon BOOLEAN
-- attend_morning BOOLEANf
+- attend_morning BOOLEAN
 
 ### Validations
 - 

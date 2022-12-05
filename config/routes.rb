@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :events
   resources :children
+  resources :event_days
+  resources :registrations, only: [:new, :edit, :destroy]
   resources :schools
   devise_for :users
 
@@ -8,5 +10,5 @@ Rails.application.routes.draw do
   resources :users
 
   # Defines the root path route ("/")
-  root "users#index"
+  root "events#index"
 end

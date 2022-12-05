@@ -206,6 +206,14 @@ okurayama.event_days.each do |day|
   day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
 end
 
+shinjo.event_days.each do |day|
+  day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
+end
+
+mizonokuchi.event_days.each do |day|
+  day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
+end
+
 puts "Added a random child to each event_day"
 
 children = Child.all
