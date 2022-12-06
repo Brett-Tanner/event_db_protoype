@@ -1,6 +1,9 @@
 <h1><%= @child.name %></h1>
 <%= @child.user.school.name %>
 <h2>Registrations</h2>
-<%= render @child.registrations %>
+<% @child.events.distinct.each do |event| %>
+    <h3><%= link_to event.title, event_path(event) %></h3>
+    <%= render event.registrations.where(child_id: @child.id) %>
+<% end %>
 <h2>Emergency Contacts</h2>
 <%= render @child.emergency_contacts %>

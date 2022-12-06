@@ -17,7 +17,10 @@
       </div>
     <% end %>
 
-    <%= link_to "Home", root_path%>
+    <div id="nav_bar">
+      <%= link_to "Home", root_path%>
+      <%= link_to "Child list", children_path %>
+    </div>
 
     <%= yield %>
   </body>

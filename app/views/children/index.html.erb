@@ -1,0 +1,4 @@
+<% @children.each do |child| %>
+    <%= link_to "#{child.name} at #{child.school.name} school", child_path(child) %>
+    <br>
+<% end %>
