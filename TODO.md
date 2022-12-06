@@ -1,17 +1,5 @@
-# Features for this prototype
-- [] redirected to login page unless signed in (should be able to set that application-wide)
-- [] show different things depending on user role
-    - Parents
-        - [] Can sign up for events
-            - [] can select multiple days to sign up for at once
-    - SM
-        - [] can view all attending Ss
-        - [] and S list of their own school
-        - [] can edit S attendance/other details
-    - Admin
-        - [] can create events/schools
-
 # Future Notes
 
 - I can probably autogenerate the correct number of days for an event based on the start and end dates, then redirect to a form where they set up those days after the event is successfully created
     - But there are holidays and weekends, so maybe a calendar based date picker would be better
+- [Better way to do views for different roles in the future](https://stackoverflow.com/questions/39970314/how-do-i-create-multiple-views-for-different-users-by-role)
