@@ -5,7 +5,7 @@
     
     <p>Start Date: <%= event.start_date %></p>
     <p>End Date: <%= event.end_date %></p>
-    <p><%= event.children.count %> children attending</p>
+    <p><%= event.children.distinct.count %> children attending</p>
 
     <% if current_user.role == "admin" %>
         <div class="event_management">
