@@ -14,6 +14,13 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
+    #  TODO: implement this when it actually matters
+    # num_days = (@event.end_date - @event.start_date).to_i
+
+    # num_days.times do |i|
+    #   @event.event_days << EventDay.new(date: @event.start_date + i.days, fee: 450, morning_description: "Fun for all!". afternoon_description: "Even more fun for all!")
+    # end
+
     if @event.save
       flash[:notice] = "You've created #{@event.name} for #{event.school}"
       redirect_to event_path(@event)

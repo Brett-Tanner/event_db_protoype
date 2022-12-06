@@ -217,6 +217,11 @@ okurayama.event_days.each do |day|
       attend_afternoon: false
     },
     {
+      child_id: 2, 
+      attend_morning: false, 
+      attend_afternoon: false
+    },
+    {
       child_id: 3, 
       attend_morning: false, 
       attend_afternoon: true
@@ -229,6 +234,11 @@ shinjo.event_days.each do |day|
     {
       child_id: 4, 
       attend_morning: true, 
+      attend_afternoon: false
+    },
+    {
+      child_id: 5, 
+      attend_morning: false, 
       attend_afternoon: false
     },
     {
@@ -247,6 +257,11 @@ mizonokuchi.event_days.each do |day|
       attend_afternoon: false
     },
     {
+      child_id: 8, 
+      attend_morning: false, 
+      attend_afternoon: false
+    },
+    {
       child_id: 9, 
       attend_morning: false, 
       attend_afternoon: true
@@ -254,7 +269,7 @@ mizonokuchi.event_days.each do |day|
 ])
 end
 
-puts "Added a Timmy and Sakura to each event_day"
+puts "Registered each child for their school's events"
 
 children = Child.all
 contacts = [
