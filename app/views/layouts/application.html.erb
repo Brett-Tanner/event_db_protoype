@@ -19,8 +19,13 @@
 
     <div id="nav_bar">
       <%= link_to "Home", root_path%>
-      <%= link_to "Child List", children_path %>
+      <% if current_user.role == "admin" %>
+        <%= link_to "Child List", children_path %>
+        <%= link_to "User List", users_path %>
+        <%= link_to "School List", schools_path %>
+      <% end %>
       <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete} %>
+      <%= link_to "My Profile", user_path(current_user) %>
     </div>
 
     <%= yield %>
