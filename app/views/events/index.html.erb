@@ -1,1 +1,5 @@
-<%= render @events %>
+<% if current_user.role == "caregiver" || current_user.role == "school_manager" %>
+    <%= render current_user.school.events %>
+<% else %>
+    <%= render @events %>
+<% end %>

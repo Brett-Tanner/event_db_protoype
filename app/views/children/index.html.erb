@@ -1,4 +1,18 @@
-<% @children.each do |child| %>
-    <%= link_to "#{child.name} at #{child.school.name} school", child_path(child) %>
-    <br>
+<% if current_user.role == "caregiver" %>
+    <% current_user.children.each do |child| %>
+        <%= link_to "#{child.name} at #{child.school.name} school", child_path(child) %>
+        <br>
+    <% end %>
+<% elsif current_user.role == "school_manager" %>
+    <% current_user.school.children.each do |child| %>
+        <%= link_to "#{child.name} at #{child.school.name} school", child_path(child) %>
+        <br>
+    <% end %>
+<% elsif current_user.role == "admin" %>
+    <% @children.each do |child| %>
+        <%= link_to "#{child.name} at #{child.school.name} school", child_path(child) %>
+        <br>
+    <% end %>
+<% else %>
+    <p>You shouldn't be here</p>
 <% end %>
