@@ -1,11 +1,13 @@
 <div class="child">
-    <%= child.name %>
+    <div class="name"><%= child.name %></div>
     
     <%= form_with model: child do |child_form| %>
         <%= child_form.fields_for :registrations, child.registrations.where(event_day_id: event_days) do |registration_field| %>
             <%= render "registrations/registration_field", form: registration_field %>
         <% end %>
-        <%= child_form.submit "Update registrations" %>
+        <div class="registration_field">
+            <%= child_form.submit "Update registrations" %>
+        </div>
     <% end %>
     <br>    
 </div>

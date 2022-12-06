@@ -1,10 +1,55 @@
-.event_days_container {
+#event_show {
+    text-align: center;
+}
+
+.event {
+    box-shadow: 0.5vw 0.5vw 1vw;
+    padding: 1vw;
+    margin: 1vw 0vw;
+}
+
+.event_days_container{
     display: flex;
     flex-flow: row wrap;
     gap: 1vw;
+    text-align: center;
 }
 
-.registration_container {
+.event_days_container div:not(.name),
+.children_container form,
+.children_container form div {
+    flex: 1 1 0;
+}
+
+.children_container {
     display: flex;
     flex-flow: column wrap;
+    gap: 1vw;
+}
+
+.name {
+    flex: 0 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.child {
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid black;
+    padding: 1vw;
+}
+
+.child>form {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.registration_field {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
 }
