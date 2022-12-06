@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :events
   resources :children
   resources :event_days
-  resources :registrations, only: [:new, :edit, :destroy]
+  resources :registrations
   resources :schools
   devise_for :users
 

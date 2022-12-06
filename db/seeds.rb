@@ -132,17 +132,24 @@ timmy = {
   allergies: "Augmentin"
 }
 
+sakura = {
+  name: "Sakura",
+  birthday: "2020-12-18",
+  level: "Galaxy 2",
+  allergies: "Bread"
+}
+
 okurayama_parents = okurayama.users.where(role: 0)
 okurayama_parents.first.children.create(timmy)
-okurayama_parents.last.children.create([timmy, timmy])
+okurayama_parents.last.children.create([timmy, sakura])
 
 shinjo_parents = shinjo.users.where(role: 0)
 shinjo_parents.first.children.create(timmy)
-shinjo_parents.last.children.create([timmy, timmy])
+shinjo_parents.last.children.create([timmy, sakura])
 
 mizonokuchi_parents = mizonokuchi.users.where(role: 0)
 mizonokuchi_parents.first.children.create(timmy)
-mizonokuchi_parents.last.children.create([timmy, timmy])
+mizonokuchi_parents.last.children.create([timmy, sakura])
 
 
 puts "Gave the first parent from each school once child, and the second two children"
@@ -203,18 +210,51 @@ puts "Added a unique 'Winter School' event to each school, plus 'Summer School' 
 puts "Created 3 event days for each Winter School, 2 for Summer School"
 
 okurayama.event_days.each do |day|
-  day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
+  day.registrations.create([
+    {
+      child_id: 1, 
+      attend_morning: true, 
+      attend_afternoon: false
+    },
+    {
+      child_id: 3, 
+      attend_morning: false, 
+      attend_afternoon: true
+    }
+])
 end
 
 shinjo.event_days.each do |day|
-  day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
+  day.registrations.create([
+    {
+      child_id: 4, 
+      attend_morning: true, 
+      attend_afternoon: false
+    },
+    {
+      child_id: 6, 
+      attend_morning: false, 
+      attend_afternoon: true
+    }
+])
 end
 
 mizonokuchi.event_days.each do |day|
-  day.registrations.create(child_id: rand(1..9), attend_morning: true, attend_afternoon: false)
+  day.registrations.create([
+    {
+      child_id: 7, 
+      attend_morning: true, 
+      attend_afternoon: false
+    },
+    {
+      child_id: 9, 
+      attend_morning: false, 
+      attend_afternoon: true
+    }
+])
 end
 
-puts "Added a random child to each event_day"
+puts "Added a Timmy and Sakura to each event_day"
 
 children = Child.all
 contacts = [

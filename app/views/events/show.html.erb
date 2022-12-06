@@ -3,3 +3,15 @@
 <div class="event_days_container">
     <%= render @event.event_days %>
 </div>
+
+<div class="children_container">
+    <% if current_user.role == "parent" %>
+        <%= render current_user.children, event_days: @event.event_days.map{|ed| ed.id} %>
+    <% elsif current_user.role == "admin" %>
+        <%= render @event.school.children, event_days: @event.event_days.map{|ed| ed.id} %>
+    <% elsif current_user.role == "school_manager" %>
+        <%= render current_user.school.children, event_days: @event.event_days.map{|ed| ed.id} %>
+    <% else %>
+        <p>You shouldn't be here....</p>
+    <% end %>
+</div>
