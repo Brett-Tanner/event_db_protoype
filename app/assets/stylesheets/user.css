@@ -1,0 +1,16 @@
+#user_show .name {
+    flex: 0 1 0;
+}
+
+#user_show .child,
+#user_show .event_day_container {
+    margin: 1vw;
+}
+
+#user_show .child form {
+    flex: 1 1 0;
+}
+
+#user_show .child form div {
+    flex: 1 1 0;
+}
