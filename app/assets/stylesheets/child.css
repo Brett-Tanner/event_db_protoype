@@ -1,0 +1,30 @@
+.event_details.child_show {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+}
+
+.event_day_container.child_show, 
+.registration_container.child_show {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 1 0;
+    gap: 1vw;
+    padding: 1vw;
+}
+
+.event_day_container.child_show div {
+    flex: 1 1 0;
+}
+
+.registration_container.child_show form {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1vw;
+    flex: 1 1 0;
+    border: 1px solid black;
+}
+
+.registration_container.child_show form div {
+    flex: 1 1 0;
+}

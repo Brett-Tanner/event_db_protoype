@@ -2,8 +2,26 @@
 <%= @child.user.school.name %>
 <h2>Registrations</h2>
 <% @child.events.distinct.each do |event| %>
-    <h3><%= link_to event.title, event_path(event) %></h3>
-    <%= render event.registrations.where(child_id: @child.id) %>
+    <% event_days = event.event_days.map{|ed| ed.id} %>
+    <h2><%= link_to event.title, event_path(event) %></h3>
+
+    <div class="event_details child_show">
+        <div class="event_day_container child_show">
+            <%= render event.event_days %>
+            <div class="button_spacer"></div>
+        </div>
+
+        <div class="registration_container child_show">
+            <%= form_with model: @child do |child_form| %>
+                <%= child_form.fields_for :registrations, @child.registrations.where(event_day_id: event_days) do |registration_field| %>
+                    <%= render "registrations/registration_field", form: registration_field %>
+                <% end %>
+                <div class="registration_field">
+                    <%= child_form.submit "Update registrations" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
 <% end %>
 <h2>Emergency Contacts</h2>
 <%= render @child.emergency_contacts %>

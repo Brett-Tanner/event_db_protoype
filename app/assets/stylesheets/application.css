@@ -20,7 +20,24 @@
 
 body {
     margin: 0;
- }
+}
+
+.alert,
+.notice {
+    text-align: center;
+    font-weight: bold;
+    padding: 1vw;
+}
+
+.alert {
+    background-color: red;
+    color: white;
+}
+
+.notice {
+    background-color: lightgreen;
+    color: green;
+}
 
 #nav_bar {
     height: 3vw;
