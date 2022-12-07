@@ -1,0 +1,37 @@
+<%= form_with model: @event do |form| %>
+
+    <h2>Event Details</h2>
+
+    <div class="event_field">
+        <%= form.label :school_id %>
+        <%= form.collection_select :school_id, School.all, :id, :name %>
+    </div>
+
+    <div class="event_field">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>  
+
+    <div class="event_field">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>  
+
+    <div class="event_field">
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date %>
+    </div>  
+
+    <div class="event_field">
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date %>
+    </div>
+
+    <h2>Event Days</h2>
+    
+    <%= form.fields_for :event_days do |event_day_form| %>
+        <%= render "event_day_fields", f: event_day_form %>
+    <% end %>
+
+    <%= form.submit %> 
+<% end %>

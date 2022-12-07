@@ -8,21 +8,27 @@ class EventsController < ApplicationController
   end
   
   def new
-    @event = Event.new
+    start_date = Date.parse(params[:start_date])
+    end_date = Date.parse(params[:end_date])
+    fee = params[:fee]
+
+    num_days = (end_date - start_date).to_i + 1
+
+    if current_user.role != "admin"
+      render "errors/permission"
+    else
+      @event = Event.new(start_date: start_date, end_date: end_date)
+      num_days.times do |i|
+        @event.event_days << EventDay.new(date: start_date + i.days, fee: fee)
+      end
+    end
   end
   
   def create
     @event = Event.new(event_params)
 
-    #  TODO: implement this when it actually matters
-    # num_days = (@event.end_date - @event.start_date).to_i
-
-    # num_days.times do |i|
-    #   @event.event_days << EventDay.new(date: @event.start_date + i.days, fee: 450, morning_description: "Fun for all!". afternoon_description: "Even more fun for all!")
-    # end
-
     if @event.save
-      flash[:notice] = "You've created #{@event.name} for #{event.school}"
+      flash[:notice] = "You've created #{@event.title} for #{@event.school.name}"
       redirect_to event_path(@event)
     else
       flash.now[:alert] = "Could not create event"
@@ -60,6 +66,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :end_date)
+    params.require(:event).permit(:id, :school_id, :title, :description, :start_date, :end_date, event_days_attributes: [:id, :date, :fee, :morning_description, :afternoon_description])
   end
 end

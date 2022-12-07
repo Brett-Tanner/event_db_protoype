@@ -10,6 +10,7 @@
     <% if current_user.role == "admin" %>
         <div class="event_management">
             <%= link_to "Edit Event", edit_event_path(event) %>
+            <%= link_to "Delete Event", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete #{event.title} at #{event.school.name}?"} %>
         </div>
     <% end %>
 </div>

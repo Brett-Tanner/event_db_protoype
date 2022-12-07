@@ -1,5 +1,28 @@
-<% if current_user.role == "caregiver" || current_user.role == "school_manager" %>
-    <%= render current_user.school.events %>
-<% else %>
-    <%= render @events %>
-<% end %>
+<main id="events_index">
+    <% if current_user.role == "caregiver" || current_user.role == "school_manager" %>
+        <%= render current_user.school.events %>
+    <% else %>
+        <%= form_with url: new_event_path, method: :get, id: "event_index_form" do |form| %>
+            <div class="event_field">
+                <%= form.label :start_date %>
+                <%= form.date_field :start_date %>
+            </div>  
+
+            <div class="event_field">
+                <%= form.label :end_date %>
+                <%= form.date_field :end_date %>
+            </div>
+
+            <div class="event_day_field">
+                <%= form.label :fee, "Daily Fee" %>
+                <%= form.number_field :fee %>    
+            </div>
+
+            <%= form.submit "Create New Event", id: "new_event_submit" %>
+        <% end %>
+
+        <div class="event_list">
+            <%= render @events %>
+        </div>
+    <% end %>
+</main>

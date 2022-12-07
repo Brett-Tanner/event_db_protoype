@@ -1,3 +1,32 @@
+#events_index {
+    text-align: center;
+}
+
+#new_event_link {
+    padding: 1vw;
+}
+
+#new_event_submit {
+    text-decoration: none;
+    background-color: #ef8200;
+    padding: 1vw;
+    border-radius: 5rem;
+    color: white;
+}
+
+#event_index_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    padding: 1vw;
+}
+
+#new_event_submit:hover {
+    color: #ef8200;
+    background-color: white;
+}
+
 #event_show {
     text-align: center;
 }
