@@ -1,2 +1,4 @@
-<%= link_to "New User", new_user_path %>
+<% if current_user.role == "admin" %>
+    <%= link_to "New User", new_user_path %>
+<% end %>
 <%= render @users %>

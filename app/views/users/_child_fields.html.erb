@@ -1,0 +1,25 @@
+<div class="child_fields_wrapper" data-new-record="<%= f.object.new_record? %>">
+    <%= f.hidden_field :user_id %>
+
+    <div class="child_field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="child_field">
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday %>
+    </div>
+
+    <div class="child_field">
+        <%= f.label :level %>
+        <%= f.select :level, ["Kindy", "Land 1", "Land 2", "Sky 1", "Sky 2", "Galaxy 1", "Galaxy 2"] %>
+    </div>
+
+    <div class="child_field">
+        <%= f.label :allergies %>
+        <%= f.text_area :allergies %>
+    </div>
+
+    <%= button_tag "Remove Child", data: {action: "fields#remove"} %>
+</div>

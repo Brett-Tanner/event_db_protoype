@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
@@ -13,6 +14,10 @@ class UsersController < ApplicationController
   end
   
   def create
+    unless current_user.role == "admin"
+      params[:role] = "caregiver"
+    end
+
     @user = User.new(user_params)
 
     if @user.save
@@ -54,6 +59,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation)
+    params.require(:user).permit(:id, :role, :name, :phone, :email, :password, :password_confirmation, :school_id, children_attributes: [:id, :user_id, :name, :birthday, :level, :allergies])
   end
 end

@@ -1,15 +1,57 @@
-<%= form_with model: @user do |form| %>
+<%= form_with model: @user, data: {controller: :fields} do |form| %>
+
+    <% if current_user.role == "admin" %>
+        <%= form.label :role %>
+        <%= form.select :role, [["Admin", "admin"], ["School Manager", "school_manager"], ["Parent", "caregiver"]] %>
+    <% else %>
+        <%= form.hidden_field :role, value: 0 %>
+    <% end %>
+
+     <div class="user_fields">
+        <%= form.label :school_id %>
+        <%= form.collection_select :school_id, School.order(:name), :id, :name %>
+    </div>
+
     <div class="user_fields">
         <%= form.label :name %>
         <%= form.text_field :name %>
     </div>
+
     <div class="user_fields">
         <%= form.label :phone %>
         <%= form.text_field :phone %>
     </div>
+
     <div class="user_fields">
         <%= form.label :email %>
         <%= form.text_field :email %>
     </div>
+
+    <%# TODO: need temp password too %>
+
+    <div class="user_fields">
+        <%= form.label :password, "Temp password" %>
+        <%= form.text_field :password %>
+    </div>
+
+    <div class="user_fields">
+        <%= form.label :password_confirmation, "Confirm temp password" %>
+        <%= form.text_field :password_confirmation %>
+    </div>
+
+    <template data-fields-target="template">
+        <%= form.fields_for :children, Child.new(user_id: @user.id), child_index: 'CHILD' do |f| %>
+            <%= render "child_fields", f: f %>
+        <% end %>
+    </template>
+
+    <%= form.fields_for :children do |f| %>
+        <%= render "child_fields", f: f %>
+    <% end %>
+
+    <div data-fields-target="target"></div>
+
+    <%= button_tag "Add Child", data: {action: "fields#add"} %>
+
     <%= form.submit %>
 <% end %>
