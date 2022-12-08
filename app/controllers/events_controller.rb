@@ -29,6 +29,16 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:notice] = "You've created #{@event.title} for #{@event.school.name}"
+
+      kids = @event.school.children
+      event_days = @event.event_days
+
+      event_days.each do |event_day|
+        kids.each do |kid|
+          event_day.registrations.create(child_id: kid.id, attend_morning: false, attend_afternoon: false)
+        end
+      end
+
       redirect_to event_path(@event)
     else
       flash.now[:alert] = "Could not create event"
