@@ -1,5 +1,7 @@
 <main id="user_show">
     <%= render @user %>
+
+    <%= link_to "Add a student", new_child_path(user: @user.id) %>
     
     <% @user.children.first.events.distinct.each do |event| %>
         <% event_days = event.event_days.map{|ed| ed.id} %>

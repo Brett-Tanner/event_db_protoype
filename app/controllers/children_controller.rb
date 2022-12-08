@@ -8,7 +8,7 @@ class ChildrenController < ApplicationController
   end
   
   def new
-    @child = Child.new
+    @child = Child.new(user_id: params[:user])
   end
   
   def create
@@ -16,6 +16,11 @@ class ChildrenController < ApplicationController
 
     if @child.save
       flash[:notice] = "You have added #{@child.name} as a child of #{@child.user.name}"
+
+      # @child.school.events.each do |event|
+
+      # end
+      
       redirect_to user_path(@child.user)
     else
       flash.now[:alert] = "Could not create child"
@@ -53,6 +58,6 @@ class ChildrenController < ApplicationController
   private
 
   def child_params
-    params.require(:child).permit(:id, :name, :birthday, :level, :allergies, registrations_attributes: [:id, :child_id, :event_day_id, :attend_morning, :attend_afternoon])
+    params.require(:child).permit(:id, :name, :birthday, :level, :allergies, :user_id, registrations_attributes: [:id, :child_id, :event_day_id, :attend_morning, :attend_afternoon])
   end
 end

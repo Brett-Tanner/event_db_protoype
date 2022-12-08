@@ -1,0 +1,27 @@
+<%= form_with model: child do |form| %>
+        <%= form.hidden_field :user_id %>
+
+        <h4>Creating a new child for <%= child.user.name %> </h4>
+
+        <div class="child_field">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+        </div>
+
+        <div class="child_field">
+            <%= form.label :birthday %>
+            <%= form.date_field :birthday %>
+        </div>
+
+        <div class="child_field">
+            <%= form.label :level %>
+            <%= form.select :level, ["Kindy", "Land 1", "Land 2", "Sky 1", "Sky 2", "Galaxy 1", "Galaxy 2"] %>
+        </div>
+
+        <div class="child_field">
+            <%= form.label :allergies %>
+            <%= form.text_area :allergies %>
+        </div>
+
+        <%= form.submit %>
+<% end %>
