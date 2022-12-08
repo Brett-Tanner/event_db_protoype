@@ -17,9 +17,11 @@ class ChildrenController < ApplicationController
     if @child.save
       flash[:notice] = "You have added #{@child.name} as a child of #{@child.user.name}"
 
-      # @child.school.events.each do |event|
-
-      # end
+      @child.school.events.each do |event|
+        event.event_days.each do |ed|
+          ed.registrations.create(event_day_id: ed.id, child_id: @child.id, attend_morning: false, attend_afternoon: false)
+        end
+      end
       
       redirect_to user_path(@child.user)
     else
