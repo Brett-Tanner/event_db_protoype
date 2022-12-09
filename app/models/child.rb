@@ -8,6 +8,8 @@ class Child < ApplicationRecord
   has_many :emergency_contacts, dependent: :destroy
   has_one :school, through: :user
 
+  validates :category, inclusion: {in: ["gaibu", "naibu", "yoyaku"], message: "That's not a valid category of student"}
+
   def events
     super.distinct
   end
