@@ -9,6 +9,7 @@ class SchoolsController < ApplicationController
   
   def new
     @school = School.new
+    @school.users.new(role: "school_manager")
   end
   
   def create
@@ -53,6 +54,6 @@ class SchoolsController < ApplicationController
   private
 
   def school_params
-    params.require(:school).permit()
+    params.require(:school).permit(:id, :name, :address, :phone, users_attributes: [:id, :role, :name, :phone, :email, :password, :password_confirmation])
   end
 end

@@ -1,1 +1,5 @@
+<% if current_user.role == "admin" %>
+    <%= link_to "Add a school", new_school_path %>
+<% end %>
+
 <%= render @schools %>
