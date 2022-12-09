@@ -7,4 +7,13 @@ class Child < ApplicationRecord
   has_many :events, through: :event_days
   has_many :emergency_contacts, dependent: :destroy
   has_one :school, through: :user
+
+  def events
+    super.distinct
+  end
+
+  def attend_event?(event)
+    return true if self.events.include?(event)
+    false
+  end
 end

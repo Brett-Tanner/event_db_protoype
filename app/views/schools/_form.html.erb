@@ -14,8 +14,6 @@
         <%= form.text_field :phone %>
     </div>
 
-    <%# need some kind of different logic for new/editing since it won'r show a new sm unless saved, and can't save %>
-
     <% school.users.each do |user| %>
         <% if user.role == "school_manager" %>
             <%= form.fields_for :users, user do |sm_form| %>
