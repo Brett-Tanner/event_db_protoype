@@ -3,16 +3,18 @@
     
     <%= link_to "Add a student", new_child_path(user: @user.id) %>
     
-    <% @user.children.first.events.distinct.each do |event| %>
-            <% event_days = event.event_days.map{|ed| ed.id} %>
-            <h2><%= link_to event.title, event_path(event) %></h2>
-            <div class="event_details child_show">
-                <div class="event_day_container child_show">
-                    <div class="name">Name:</div>
-                    <%= render event.event_days %>
-                    <div class="button_spacer"></div>
+    <% unless @user == current_user %>
+        <% @user.children.first.events.distinct.each do |event| %>
+                <% event_days = event.event_days.map{|ed| ed.id} %>
+                <h2><%= link_to event.title, event_path(event) %></h2>
+                <div class="event_details child_show">
+                    <div class="event_day_container child_show">
+                        <div class="name">Name:</div>
+                        <%= render event.event_days %>
+                        <div class="button_spacer"></div>
+                    </div>
+                <%= render @user.children, event_days: event_days %>
                 </div>
-            <%= render @user.children, event_days: event_days %>
-            </div>
+        <% end %>
     <% end %>
 </div>
