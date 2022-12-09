@@ -1,0 +1,21 @@
+<main id="school_show">
+    <h1><%= @school.name %></h1>
+    <h3><%= @school.address %></h3>
+    <h3><%= @school.phone %></h3>
+    <p>There are <%= @school.children.count %> children enrolled at this school</p>
+
+    <h2>School Events</h2>
+
+    <% @school.events.distinct.each do |event| %>
+            <% event_days = event.event_days.map{|ed| ed.id} %>
+            <h2><%= link_to event.title, event_path(event) %></h2>
+            <div class="event_details child_show">
+                <div class="event_day_container child_show">
+                    <div class="name">Name:</div>
+                    <%= render event.event_days %>
+                    <div class="button_spacer"></div>
+                </div>
+            <%= render @school.children, event_days: event_days %>
+            </div>
+    <% end %>
+</main>

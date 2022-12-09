@@ -1,0 +1,16 @@
+#school_show .name {
+    flex: 0 1 0;
+}
+
+#school_show .child,
+#school_show .event_day_container {
+    margin: 1vw;
+}
+
+#school_show .child form {
+    flex: 1 1 0;
+}
+
+#school_show .child form div {
+    flex: 1 1 0;
+}
