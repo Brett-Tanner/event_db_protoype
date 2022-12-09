@@ -4,7 +4,7 @@
         <%= form.label :role %>
         <%= form.select :role, [["Admin", "admin"], ["School Manager", "school_manager"], ["Parent", "caregiver"]] %>
     <% else %>
-        <%= form.hidden_field :role, value: 0 %>
+        <%= form.hidden_field :role, value: "caregiver" %>
     <% end %>
 
      <div class="user_fields">
@@ -26,8 +26,6 @@
         <%= form.label :email %>
         <%= form.text_field :email %>
     </div>
-
-    <%# TODO: need temp password too %>
 
     <div class="user_fields">
         <%= form.label :password, "Temp password" %>
