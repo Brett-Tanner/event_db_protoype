@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_131443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.string "category"
+    t.string "category", default: "naibu"
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 

@@ -1,7 +1,7 @@
 <div id="user_show">
     <%= render @user %>
     
-    <% unless @user == current_user %>
+    <% unless @user.children.empty? %>
         <%= link_to "Add a student", new_child_path(user: @user.id) %>
         
         <% @user.children.first.events.distinct.each do |event| %>

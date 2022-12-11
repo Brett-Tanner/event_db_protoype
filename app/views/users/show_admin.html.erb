@@ -3,7 +3,7 @@
     
     <%= link_to "Add a student", new_child_path(user: @user.id) %>
     
-    <% unless @user == current_user %>
+    <% unless @user.children.empty? %>
         <% @user.children.first.events.distinct.each do |event| %>
                 <% event_days = event.event_days.map{|ed| ed.id} %>
                 <h2><%= link_to event.title, event_path(event) %></h2>

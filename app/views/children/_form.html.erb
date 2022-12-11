@@ -19,6 +19,11 @@
         </div>
 
         <div class="child_field">
+            <%= form.label :category %>
+            <%= form.select :category, [["Gaibu", "gaibu"], ["Naibu", "naibu"], ["Yoyaku", "yoyaku"]] %>
+        </div>
+
+        <div class="child_field">
             <%= form.label :allergies %>
             <%= form.text_area :allergies %>
         </div>
