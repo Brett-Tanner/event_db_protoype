@@ -24,6 +24,7 @@
             <%= form.fields_for :users, user do |sm_form| %>
 
                 <%= sm_form.hidden_field :school_id, value: school.id %>
+                <%= sm_form.hidden_field :id %>
 
                 <div class="form_field">
                     <%= sm_form.label :role %>
