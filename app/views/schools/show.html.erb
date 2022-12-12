@@ -18,4 +18,6 @@
             <%= render @school.children, event_days: event_days %>
             </div>
     <% end %>
+
+    <%= link_to "Delete School", school_path(@school), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this school?"} %>
 </main>
