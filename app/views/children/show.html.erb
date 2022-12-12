@@ -3,6 +3,7 @@
     School: <%= link_to @child.user.school.name, school_path(@child.user.school) %>
     <br>
     Parent: <%= link_to @child.user.name, user_path(@child.user) %>
+    <%= link_to "Delete Child", child_path(@child), data: {turbo_method: :delete, message: "Are you sure you want to delete a child ;( ?"} %>
     
     <h2>Registrations</h2>
     <% @child.events.distinct.each do |event| %>

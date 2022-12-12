@@ -1,5 +1,5 @@
 class Child < ApplicationRecord
-  after_save :register_all_events
+  after_create :register_all_events
 
   belongs_to :user
 
