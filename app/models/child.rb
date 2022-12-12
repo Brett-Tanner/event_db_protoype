@@ -1,4 +1,6 @@
 class Child < ApplicationRecord
+  after_save :register_all_events
+
   belongs_to :user
 
   has_many :registrations, dependent: :destroy
@@ -17,5 +19,15 @@ class Child < ApplicationRecord
   def attend_event?(event)
     return true if self.events.include?(event)
     false
+  end
+
+  private
+
+  def register_all_events
+    self.school.events.each do |event|
+      event.event_days.each do |ed|
+        ed.registrations.create(event_day_id: ed.id, child_id: self.id, attend_morning: false, attend_afternoon: false)
+      end
+    end
   end
 end

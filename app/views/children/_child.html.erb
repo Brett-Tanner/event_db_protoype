@@ -1,7 +1,8 @@
 <div class="child">
     <div class="name">
-        <%= link_to child.name, child_path(child) %>
-        <%= child.category %>
+        <p><%= link_to child.name, child_path(child) %></p>
+        <br>
+        <p><%= child.category %></p>
     </div>
     
     <%= form_with model: child do |child_form| %>

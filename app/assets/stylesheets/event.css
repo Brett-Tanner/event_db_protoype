@@ -59,6 +59,7 @@
 .name {
     flex: 0 1 0;
     display: flex;
+    flex-flow: column wrap;
     align-items: center;
     justify-content: center;
     font-weight: bold;

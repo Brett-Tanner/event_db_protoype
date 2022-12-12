@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # after_save :register_all_events
 
   def index
     @users = User.all
@@ -61,4 +62,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :role, :name, :phone, :email, :password, :password_confirmation, :school_id, children_attributes: [:id, :user_id, :name, :birthday, :level, :category, :allergies])
   end
+
+  # def register_all_events
+  #   self.school.events.each do |event|
+  #     event.event_days.each do |ed|
+  #       ed.registrations.create(event_day_id: ed.id, child_id: @child.id, attend_morning: false, attend_afternoon: false)
+  #     end
+  #   end
+  # end
 end
