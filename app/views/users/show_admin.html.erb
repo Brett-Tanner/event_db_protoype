@@ -1,5 +1,10 @@
 <div id="user_show">
     <%= render @user %>
+
+    <% if @user == current_user %>
+        <h2>You are an admin</h2>
+        <p>With great power, comes great responsibility</p>
+    <% end %>
     
     <%= link_to "Add a student", new_child_path(user: @user.id) %>
     

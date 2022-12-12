@@ -1,5 +1,10 @@
 <div id="user_show">
     <%= render @user %>
+
+    <% if @user == current_user %>
+        <h2>School manager for:</h2>
+        <%= render @user.school %>
+    <% end %>
     
     <% unless @user.children.empty? %>
         <%= link_to "Add a student", new_child_path(user: @user.id) %>
