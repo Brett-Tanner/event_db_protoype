@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class EventDays::RegistrationsController < ApplicationController
   def new
     @registration = Registration.new(event_day_id: params[:event_day], child_id: params[:child])
   end

@@ -7,7 +7,7 @@
     
     <%= form_with model: child do |child_form| %>
         <%= child_form.fields_for :registrations, child.registrations.where(event_day_id: event_days) do |registration_field| %>
-            <%= render "registrations/registration_field", form: registration_field %>
+            <%= render "event_days/registrations/registration_field", form: registration_field %>
         <% end %>
         <div class="registration_field">
             <%= child_form.submit "Update registrations" %>
