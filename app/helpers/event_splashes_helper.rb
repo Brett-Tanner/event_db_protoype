@@ -1,0 +1,2 @@
+module EventSplashesHelper
+end

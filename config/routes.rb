@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+  get "/event_splashes/current_event", to: "event_splashes#current_event" 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
