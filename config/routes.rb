@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'u'
+  devise_for :users, path: 'd'
 
   authenticate :user do
     resources :events
@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: "events#index", as: :authenticated_root
   end
-  root to: redirect("/users/sign_in")
+  root to: redirect("/d/sign_in")
 end
