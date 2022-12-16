@@ -8,9 +8,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum role: [:caregiver, :school_manager, :admin]
+  enum role: [:caregiver, :school_manager, :admin, :area_manager]
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :caregiver
   end
 end
